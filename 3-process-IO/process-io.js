@@ -100,10 +100,25 @@ stdin.on('data', data => {
 // Напишите программу, которая спрашивает у пользователя его имя, 
 // после ввода имени возвращает указанное пользователем имя наоборот и прекращает работу.
 
+// function exitHandler(options, exitCode) {
+//   if (options.cleanup) console.log('clean');
+//   if (exitCode || exitCode === 0) console.log(' I pressed crl + c\n');
+//   if (options.exit) process.exit();
+// }
+// process.stdin.resume();
 stdout.write('How is your name?\n');
 stdin.on('data', data => {
   const dataReverse = data.toString().split('').reverse().join('')
-  stdout.write('The name will be reverse: ')
+  stdout.write('The name will be reverse: \n')
   stdout.write(dataReverse);
+  process.on('beforeExit', (code) => {
+    console.log('Process beforeExit event with code: ', code);
+  });
   process.exit();
 })
+
+
+process.on('SIGINT', (code) => {
+  console.log('Process exit event with code: ', code);
+});
+// process.on('SIGINT', exitHandler.bind(null, { exit: true }));
