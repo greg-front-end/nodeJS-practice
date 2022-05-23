@@ -1,3 +1,4 @@
+const http = require('http');
 /*
   Модуль events
 Модуль Events предназначен для работы с событиями.
@@ -154,3 +155,12 @@ user.on('greetings', user.sayHi);
 
 user.emit('greetings'); // Hi! My name is Vasya
 */
+
+// Using events emmiter with http
+// const server = http.createServer();
+
+// server.on('request', (req, res) => {
+//     res.end('Server is running');
+// })
+
+// server.listen(3000);
