@@ -1,0 +1,1 @@
+Here is text from test.txt file: I am text for test file for the understanding Event Loop priciples in Node js

@@ -1,4 +1,4 @@
-import { readFile as readFilePromise } from 'fs/promises';
+import { readFile as readFilePromise, writeFile as writeFilePromise } from 'fs/promises';
 import http from 'http';
 
 // import { readFile } from 'fs';
@@ -84,7 +84,8 @@ import http from 'http';
 // fourth solution and the best is import promises readFile imidiatly
 const start = async () => {
   try {
-    const first = await readFilePromise('./test.txt', {encoding: 'utf-8'});
+    const first = await readFilePromise('./test.txt', { encoding: 'utf-8' });
+    await writeFilePromise('newText.txt', `Here is text from test.txt file: ${first}`);
     console.log(first);
   } catch (error) {
     return console.log(error);
