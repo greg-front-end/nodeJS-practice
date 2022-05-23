@@ -124,20 +124,27 @@ pipeline(
 );
 */
 const fs = require('fs');
-const zlib = require('zlib');
-const { pipeline } = require('stream');
+// const zlib = require('zlib');
+// const { pipeline } = require('stream');
 
-const input = fs.createReadStream('source.txt', 'utf-8');
-const output = fs.createWriteStream('destination.txt.gz');
-const gzip = zlib.createGzip();
+// const input = fs.createReadStream('source.txt', 'utf-8');
+// const output = fs.createWriteStream('destination.txt.gz');
+// const gzip = zlib.createGzip();
 
-pipeline(
-  input,
-  gzip,
-  output,
-  err => {
-    if (err) {
-      // обрабатываем ошибки
-    }
-  }
-);
+// pipeline(
+//   input,
+//   gzip,
+//   output,
+//   err => {
+//     if (err) {
+//       // обрабатываем ошибки
+//     }
+//   }
+// );
+
+const stream = fs.createReadStream('/source.txt');
+
+stream.on('data', (data) => {
+  console.log(data);
+})
+stream.on('error', (err) => console.log(err))
