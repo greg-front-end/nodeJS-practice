@@ -48,3 +48,20 @@ NB! response.end() должен завершать каждый ответ. Бе
 // server.listen(PORT, 'localhost', () => {
 //     console.log(`Сервер запущен на порту ${PORT}`);
 // });
+
+const http = require('http');
+const fs = require('fs');
+// now we put the data throw chunks
+http.createServer((req, res) => {
+
+	const fileStream = fs.createReadStream('./test.txt', 'utf-8');
+
+	fileStream.on('open', () => {
+		fileStream.pipe(res);
+	})
+
+	fileStream.on('error', (err) => {
+		res.end(err)
+	})
+
+}).listen(3000)
