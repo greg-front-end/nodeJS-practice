@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./express/app.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greg-front-end/nodeJS-practice.git"
+  },
+  "keywords": [
+    "express",
+    "node"
+  ],
+  "author": "Greg Martinos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greg-front-end/nodeJS-practice/issues"
+  },
+  "homepage": "https://github.com/greg-front-end/nodeJS-practice#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

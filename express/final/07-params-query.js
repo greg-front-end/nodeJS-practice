@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { products } = require('./data')
+const { products } = require('../data')
 
 app.get('/', (req, res) => {
   res.send('<h1> Home Page</h1><a href="/api/products">products</a>')
@@ -35,6 +35,9 @@ app.get('/api/products/:productID/reviews/:reviewID', (req, res) => {
 
 app.get('/api/v1/query', (req, res) => {
   // console.log(req.query)
+  // for calling search or limit ->
+  // /api/v1/query?search=a&limit=1
+  // /api/v1/query?limit=2
   const { search, limit } = req.query
   let sortedProducts = [...products]
 
@@ -48,11 +51,12 @@ app.get('/api/v1/query', (req, res) => {
   }
   if (sortedProducts.length < 1) {
     // res.status(200).send('no products matched your search');
+    // we use here 'return' because one request - one response, we can send response again as at 54 line
     return res.status(200).json({ sucess: true, data: [] })
   }
   res.status(200).json(sortedProducts)
 })
 
-app.listen(5000, () => {
+app.listen(3000, () => {
   console.log('Server is listening on port 5000....')
 })

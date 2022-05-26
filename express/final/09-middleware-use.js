@@ -3,6 +3,8 @@ const app = express()
 const logger = require('./logger')
 const authorize = require('./authorize')
 //  req => middleware => res
+// for put multiple middleware use array, and order is improtant 
+// for calling use -> http://localhost:3000/?user=john
 app.use([logger, authorize])
 // api/home/about/products
 app.get('/', (req, res) => {
@@ -19,6 +21,6 @@ app.get('/api/items', (req, res) => {
   res.send('Items')
 })
 
-app.listen(5000, () => {
+app.listen(3000, () => {
   console.log('Server is listening on port 5000....')
 })
